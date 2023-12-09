@@ -1,6 +1,8 @@
 from airflow import DAG
 from airflow.datasets import Dataset
 from airflow.operators.bash import BashOperator
+from airflow.operators.empty import EmptyOperator
+
 import datetime
 
 import pendulum
@@ -35,4 +37,8 @@ with DAG(
         bash_command='echo %HOSTNAME',
     )
 
-    bash_t1 >> bash_t2
+    bash_t3 = EmptyOperator(
+    task_id = "bash_t3",
+)
+
+    bash_t1 >> bash_t2 >> bash_t3
