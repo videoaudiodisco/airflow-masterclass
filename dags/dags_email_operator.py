@@ -12,7 +12,7 @@ with DAG(
 
     send_email = EmailOperator(
         task_id = "send_email",
-        to="gyungyoonpark@gmail.com",
-        subject="airflow 성공!",
-        html_contents = "airflow 작업이 완료!"
+        to='gyungyoonpark@gmail.com',
+        subject='airflow 성공!',
+        html_contents = 'airflow 작업이 완료!'
     )
