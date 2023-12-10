@@ -5,7 +5,7 @@ import pendulum
 
 with DAG(
     dag_id="dags_email_operator",
-    schedule='0 8 ` * *',
+    schedule='0 8 * * *',
     start_date=pendulum.datetime(2023,3,1, tz="Asia/Seoul"),
     catchup=False
     ) as dag:
@@ -14,5 +14,5 @@ with DAG(
         task_id = "send_email",
         to='gyungyoonpark@gmail.com',
         subject='airflow 성공!',
-        html_contents = 'airflow 작업이 완료!'
+        html_content= 'airflow 작업이 완료!'
     )
