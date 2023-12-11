@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 import pendulum
-import airflow.decorators import task
+from airflow.decorators import task
 
 with DAG(
     dag_id="dags_python_task_operator",
