@@ -15,7 +15,9 @@ with DAG(
     @task(
     task_id='task_using_macros',
     templates_dict={
+    # 전월의 마지막날. 예: 오늘이 3/15 이면 2/1로 설정
     'start_date':'{{ (data_interval_end.in_timezone("Asia/Seoul") + macros.dateutil.relativedelta.relativedelta(months=-1, day=1)) | ds }}',
+    # 이번 지난달 마지막 일로 설정
     'end_date': '{{ (data_interval_end.in_timezone("Asia/Seoul").replace(day=1) + macros.dateutil.relativedelta.relativedelta(days=-1)) | ds }}'
     }
     )
@@ -31,6 +33,7 @@ with DAG(
     # 직접 날짜 연산
     @task(task_id='task_direct_calc')
     def get_datetime_calc(**kwargs):
+        # 스케줄러 부하 경감을 위해서 def 안에 라이브러리 import
         from dateutil.relativedelta import relativedelta
 
         data_interval_end = kwargs['data_interval_end']
@@ -39,4 +42,5 @@ with DAG(
         print(prev_month_day_first.strftime('%Y-%m-%d'))
         print(prev_month_day_last.strftime('%Y-%m-%d'))
 
+    # task decorator를 쓸때는 함수를 실행시켜주기만 해도 그 자체로 task를 돌릴 수 있는 객체가 나온다. 
     get_datetime_macro() >> get_datetime_calc()
