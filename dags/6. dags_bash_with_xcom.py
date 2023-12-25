@@ -14,16 +14,16 @@ with DAG(
     # echo가 여러개 있는 경우 마지막 값이 return_value 로 저장된다. 
     bash_push=BashOperator(
         task_id='bash_push',
-        bash_command="echo START &&"
+        bash_command="echo START && "
                         "echo XCOM_PUSHED"
-                        "{{ ti.xcom_push(key='bash_pushed', value='first_bash_message')}} &&"
+                        "{{ ti.xcom_push(key='bash_pushed', value='first_bash_message') }} && "
                         "echo COMPLETE"
     )
 
     bash_pull = BashOperator(
         task_id='bash_pull',
         env={'PUSHED_VALUE':"{{ ti.xcom_pull(key='bash_pushed') }}",
-             'RETURN_VALUE':"{{ ti.xcom_pull(task_ids=bash_push) }}"},
+             'RETURN_VALUE':"{{ ti.xcom_pull(task_ids='bash_push') }}"},
         bash_command="echo $PUSHED_VALUE && echo $RETURN_VALUE",
         do_xcom_push=False
     )
