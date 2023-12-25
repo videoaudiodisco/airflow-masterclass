@@ -13,6 +13,8 @@ with DAG(
     @task(task_id = 'python_xcom_push_by_return')
     def xcom_push_result(**kwargs):
         return 'Success'
+    # python에서 return을 하면 그 값은 자동으로 xcom으로 들어간다. 
+
 
     @task(task_id = 'python_xcom_pull_1')
     def xcom_pull_1(**kwargs):
