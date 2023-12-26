@@ -15,7 +15,7 @@ with DAG(
         import random
 
         item_lst = ['A', 'B', 'C']
-        selected_item = random.choice(['item_lst'])
+        selected_item = random.choice([item_lst])
         # 만약 실행해야 하는 task가 하나라면 task_id를 str 으로 하나만 넣는다.
         # 만약 실행해야 하는 task가 두개 이상이라면 list of str을 넣는다.
         if selected_item == 'A':
