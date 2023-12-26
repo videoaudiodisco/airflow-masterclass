@@ -35,7 +35,7 @@ with DAG(
         inner_func1() >> inner_function2
 
     with TaskGroup(group_id='second_group', tooltip='두번째 그룹입니다') as group_2:
-        '''여기에 적은 docstring은 표시 안됨'''
+        '''여기에 적은 docstring은 표시 안됨. 중요!!!'''
         @task(task_id='inner_function1') # task_id가 같지만, 다른 그룹에 속해있을때는 괜찮다. 
         def inner_func1(**kwargs):
             print('두번째 task group 내 첫번째 task')
