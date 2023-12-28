@@ -13,7 +13,7 @@ with DAG(
     tb_corona19_count_status = SeoulApiToCsvOperator(
         task_id='tb_corona19_count_status',
         # dataset_nm='TbCoronaCountStatus',
-        dataset_nm='cycleNewMemberRentInfoMonths'
+        dataset_nm='cycleNewMemberRentInfoMonths',
 
         # dags를 실행하는 주체는 워커 컨테이너인데 /opt/airflow/files 는 워커 컨테이너의 디렉토리
         # 그런데 이렇게 path에 저장을 해도 컨테이너를 내렸다가 다시 올리면 저장한 파일이 사라진다. 
@@ -29,7 +29,7 @@ with DAG(
     tv_corona19_vaccine_stat_new = SeoulApiToCsvOperator(
         task_id='tv_corona19_vaccine_stat_new',
         # dataset_nm='tvCorona19VaccinestatNew',
-        dataset_nm='cycleNewMemberRentInfoMonths'
+        dataset_nm='cycleNewMemberRentInfoMonths',
 
         path='/opt/airflow/files/tvCorona19VaccinestatNew/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}',
         file_name='tvCorona19VaccinestatNew.csv'
