@@ -20,6 +20,7 @@ class SeoulApiToCsvOperator(BaseOperator):
         self.base_url = f'http://{connection.host}:{connection.port}/{self.endpoint}'
 
         total_row_df = pd.DataFrame()
+        print('실행확인')
         start_row = 1
         end_row = 1000
         while True:
