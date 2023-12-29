@@ -56,11 +56,16 @@ class SeoulApiToCsvOperator(BaseOperator):
         if self.base_dt is not None:
             request_url = f'{base_url}/{start_row}/{end_row}/{self.base_dt}'
         response = requests.get(request_url, headers)
+        print('response', response)
         contents = json.loads(response.text)
+        print('contents', contents)
 
         key_nm = list(contents.keys())[0]
+        print('key_nm', key_nm)
         row_data = contents.get(key_nm).get('row')
+        print('row_data', row_data)
         row_df = pd.DataFrame(row_data)
+        print('row_df', row_df.shape)
 
         return row_df
 
