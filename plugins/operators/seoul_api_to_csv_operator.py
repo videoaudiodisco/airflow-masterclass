@@ -26,6 +26,7 @@ class SeoulApiToCsvOperator(BaseOperator):
         while True:
             self.log.info(f'시작:{start_row}')
             self.log.info(f'끝:{end_row}')
+            print(self.base_url)
             row_df = self._call_api(self.base_url, start_row, end_row)
             print(row_df.shape)
             total_row_df = pd.concat([total_row_df, row_df])
@@ -51,6 +52,7 @@ class SeoulApiToCsvOperator(BaseOperator):
                    }
 
         request_url = f'{base_url}/{start_row}/{end_row}/'
+        print('request_url 프린트', request_url)
         if self.base_dt is not None:
             request_url = f'{base_url}/{start_row}/{end_row}/{self.base_dt}'
         response = requests.get(request_url, headers)
