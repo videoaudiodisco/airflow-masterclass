@@ -20,18 +20,21 @@ class SeoulApiToCsvOperator(BaseOperator):
         self.base_url = f'http://{connection.host}:{connection.port}/{self.endpoint}'
 
         total_row_df = pd.DataFrame()
-        print('실행확인')
+        print('빈 df', total_row_df.shape)
         start_row = 1
         end_row = 1000
         while True:
             self.log.info(f'시작:{start_row}')
             self.log.info(f'끝:{end_row}')
             row_df = self._call_api(self.base_url, start_row, end_row)
+            print(row_df.shape)
             total_row_df = pd.concat([total_row_df, row_df])
+            print('새로운 df', total_row_df.shape)
             if len(row_df) < 1000:
                 break
             else:
                 start_row = end_row + 1
+                print(start_row)
                 end_row += 1000
 
         if not os.path.exists(self.path):
