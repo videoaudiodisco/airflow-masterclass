@@ -10,13 +10,14 @@ class SeoulApiToCsvOperator(BaseOperator):
         self.http_conn_id = 'openapi.seoul.go.kr'
         self.path = path
         self.file_name = file_name
-        # self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
-        self.endpoint = '76734a646d716b7235354c4e787a61/json/' + dataset_nm
+        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
+        # self.endpoint = '76734a646d716b7235354c4e787a61/json/' + dataset_nm
         self.base_dt = base_dt
 
     def execute(self, context):
         import os
         
+        print('endpoint 출력: ', self.endpoint)
         connection = BaseHook.get_connection(self.http_conn_id)
         self.base_url = f'{connection.host}:{connection.port}/{self.endpoint}'
 
