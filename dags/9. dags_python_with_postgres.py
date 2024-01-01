@@ -65,7 +65,7 @@ with DAG(
         task_id='insrt_postgres',
         python_callable=insrt_postgres,
         op_args=['172.28.0.3', '5429', 'gypark', 'gypark', 'gypark']
-        print('실행4')
     )
+    print('실행4')
         
     insrt_postgres
