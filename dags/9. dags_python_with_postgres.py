@@ -48,8 +48,12 @@ with DAG(
         import psycopg2
         from contextlib import closing
 
+        print('lalala')
+
         with closing(psycopg2.connect(host=ip, dbname=dbname, user=user, password=passwd, port=int(port))) as conn:
+            print('conn', conn)
             with closing(conn.cursor()) as cursor:
+                print('cursor', cursor)
                 dag_id = kwargs.get('ti').dag_id
                 task_id = kwargs.get('ti').task_id
                 run_id = kwargs.get('ti').run_id
