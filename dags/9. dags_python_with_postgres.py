@@ -61,8 +61,14 @@ with DAG(
     insrt_postgres = PythonOperator(
         task_id='insrt_postgres',
         python_callable=insrt_postgres,
-        # op_args=['172.28.0.3', '5432', 'gypark', 'gypark', 'gypark']
-        op_args=['172.21.0.2', '5555', 'daily_code', 'postgres', 'password1234']
+
+        # 그렇다면 외부에서(local 컴퓨터에서) 접속할 때는 5429 포트로 접속하시는게 맞습니다.
+        # 하지만 컨테이너들끼리 접속할 때에는 5432로 접속하셔야 해요 .
+        # 5429는 컨테이너가 외부로 노출할 때의 IP이고 컨테이너들끼리 통신할때는 내부 포트인 5432를 사용합니다.
+        op_args=['172.28.0.3', '5432', 'gypark', 'gypark', 'gypark']
+
+        ## daily_code 용
+        # op_args=['172.21.0.2', '5555', 'daily_code', 'postgres', 'password1234']
 
     )
         
