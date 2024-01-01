@@ -67,8 +67,8 @@ with DAG(
         # 5429는 컨테이너가 외부로 노출할 때의 IP이고 컨테이너들끼리 통신할때는 내부 포트인 5432를 사용합니다.
         op_args=['172.28.0.3', '5432', 'gypark', 'gypark', 'gypark']
 
-        ## daily_code 용
-        # op_args=['172.21.0.2', '5555', 'daily_code', 'postgres', 'password1234']
+        ## daily_code 용 : 어디로 접근?
+        # op_args=['172.21.0.2', '5432', 'daily_code', 'postgres', 'password1234']
 
     )
         
