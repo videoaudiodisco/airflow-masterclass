@@ -62,7 +62,7 @@ with DAG(
         task_id='insrt_postgres',
         python_callable=insrt_postgres,
         # op_args=['172.28.0.3', '5432', 'gypark', 'gypark', 'gypark']
-        op_args=['localhost', '5555', 'gypark', 'gypark', 'gypark']
+        op_args=['localhost', '5555', 'daily_code', 'postgres', 'password1234']
 
     )
         
