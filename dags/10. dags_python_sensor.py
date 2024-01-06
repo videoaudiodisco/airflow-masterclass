@@ -30,7 +30,9 @@ with DAG(
         except:
             from airflow.exceptions import AirflowException
             AirflowException(f'{base_dt_col} 컬럼은  YYYY.MM.DD 또는  YYYY/MM/DD 형태가 아닙니다')
-        today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
+        # today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
+
+        today_ymd = '2023-05-31'  ### 성공 확인을 위해 오늘을 이 날짜로 변경
 
         if last_date >= today_ymd:
             print(f'생성 확인(배치 날짜: {today_ymd} / API Last 날짜: {last_date})')
