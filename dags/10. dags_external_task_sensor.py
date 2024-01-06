@@ -25,7 +25,7 @@ with DAG(
         task_id='external_task_sensor_b',
         external_dag_id = 'dags_branch_python_operator',
         external_task_id='task_b',
-        allowed_states=[State.SKIPPED], # task_b 가 skipped로 되면 sensor_b task는 success로 표시된다는 뜻
+        failed_states=[State.SKIPPED], # task_b 가 skipped로 되면 sensor_b task는 failed로 표시된다는 뜻
         execution_delta=timedelta(hours=6),
         poke_interval=10
     )
@@ -34,7 +34,7 @@ with DAG(
         task_id='external_task_sensor_c',
         external_dag_id = 'dags_branch_python_operator',
         external_task_id='task_c',
-        failed_states=[State.SUCCESS], # task_c 가 success로 되면 sensor_c task는 failed로 표시된다는 뜻
+        allowed_states=[State.SUCCESS], # task_c 가 success로 되면 sensor_c task는 success로 표시된다는 뜻
         execution_delta=timedelta(hours=6),
         poke_interval=10
     )
