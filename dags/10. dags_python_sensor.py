@@ -16,7 +16,7 @@ with DAG(
 
         connection = BaseHook.get_connection(http_conn_id)
         url = f'http://{connection.host}:{connection.port}/{endpoint}/1/100'
-        response = request.get(url)
+        response = requests.get(url)
 
         contents = json.loads(response.text)
         key_nm = list(contents.keys())[0]
