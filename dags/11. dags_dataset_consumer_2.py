@@ -7,7 +7,7 @@ dataset_dags_dataset_producer_1 = Dataset("dags_dataset_producer_1")
 dataset_dags_dataset_producer_2 = Dataset("dags_dataset_producer_2")
 
 with DAG(
-    dag_id = 'dags_dataset_consumer_1',
+    dag_id = 'dags_dataset_consumer_2',
     schedule = [dataset_dags_dataset_producer_1, dataset_dags_dataset_producer_2],
     start_date=pendulum.datetime(2023,4,1,tz='Asia/Seoul'),
     catchup=False
