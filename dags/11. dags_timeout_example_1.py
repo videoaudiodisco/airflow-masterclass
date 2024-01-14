@@ -19,6 +19,9 @@ with DAG(
         'email_on_failure':True,
         'email': email_lst
     }
+
+    ## 중요! email_on_failure는 dag이 아니라 task에 걸려있는 것이다.
+    # 따라서 이메일이 보내지려면 task가 실패가 되어야 하는데, 여기서는 skip이 뜨므로 실패가 아니어서 이메일이 안보내진다. 
 ) as dag:
     bash_sleep_30 = BashOperator(
         task_id = 'bash_sleep_30',
@@ -36,3 +39,5 @@ with DAG(
     bash_sleep_30 >> bash_sleep_10
 
     # 2 tasks : 30 + 10 < 1 min --> therefore, the dag itself is success
+
+    # >> 가 없으면 병렬로 실행된다. 

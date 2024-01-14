@@ -10,7 +10,7 @@ email_str = Variable.get("email_target")
 email_lst = [email.strip() for email in email_str.split(',')]
 
 with DAG(
-    dag_id = 'dags_email_ont_failure',
+    dag_id = 'dags_email_on_failure',
     start_date=pendulum.datetime(2023,5,1, tz='Asia/Seoul'),
     catchup=False,
     schedule='0 1 * * *',
