@@ -29,7 +29,7 @@ with DAG(
 
     # dag timeout 시 이것이 실행중이므로 얘가 skipped
     bash_sleep_36 = BashOperator(
-        trigger_rule='all done',
+        trigger_rule='all_done',
         task_id = 'bash_sleep_36',
         bash_command='sleep 36'
     )

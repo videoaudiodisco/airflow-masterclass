@@ -13,7 +13,7 @@ with DAG(
     start_date= pendulum.datetime(2023,5,1, tz='Asia/Seoul'),
     catchup=False,
     schedule=None,
-    dagrun_timeout=timedelta(minute=1), # dag 전체의 timeout은 1분
+    dagrun_timeout=timedelta(minutes=1), # dag 전체의 timeout은 1분
     default_args={
         'execution_timeout': timedelta(seconds=20), # 각 task의 timeout은 20초
         'email_on_failure':True,
@@ -27,7 +27,7 @@ with DAG(
 
     bash_sleep_10= BashOperator(
         # 선행 task가 성공이든 실패든 실행되기만 하면 다음 task 실행
-        trigger_rule='all done', 
+        trigger_rule='all_done', 
 
         task_id = 'bash_sleep_10',
         bash_command='sleep 10', # 성공
