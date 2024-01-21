@@ -2,7 +2,7 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from datetime import timedelta
 import pendulum
-from config.on_failure_callbacks_to_slack import on_failure_callback_to_slack 
+from config.on_failure_callback_to_slack import on_failure_callback_to_slack 
 
 
 with DAG(
