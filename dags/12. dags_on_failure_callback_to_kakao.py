@@ -10,7 +10,7 @@ with DAG(
     start_date=pendulum.datetime(2023,5,1, tz='Asia/Seoul'),
     schedule = "*/20 * * * *",
     catchup=False,
-    dafault_args = {
+    default_args = {
         'on_failure_callback' : on_failure_callback_to_kakao,
         'execution_timeout' : timedelta(seconds=60)
     }
